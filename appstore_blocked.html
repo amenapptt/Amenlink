@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Download MyApp</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start; /* Align content to the top */
+            align-items: center;
+            background: linear-gradient(to bottom right, #a445b2, #d41872); /* Purple gradient like screenshot */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: black; /* Changed text color to black */
+            padding-top: 50px; /* Add some top padding */
+        }
+        .overlay {
+            position: relative; /* Changed to relative to flow with content */
+            margin-top: 150px; /* Adjusted position below the arrow */
+            background: none; /* Removed background */
+            padding: 0; /* Removed padding */
+            border-radius: 0; /* Removed border-radius */
+            box-shadow: none; /* Removed box-shadow */
+            max-width: 80%;
+            text-align: left; /* Aligned text to the left */
+            z-index: 10;
+        }
+        .overlay h2 {
+            margin: 0 0 10px;
+            font-size: 24px; /* Increased font size */
+            font-weight: 600;
+        }
+        .overlay p {
+            margin: 0;
+            font-size: 20px; /* Increased font size */
+            line-height: 1.5; /* Added line height for readability */
+        }
+        .arrow {
+            position: absolute; /* Changed to absolute for top-right positioning */
+            top: 50px; /* Positioned at the top */
+            right: 50px; /* Positioned at the right */
+            font-size: 60px; /* Adjusted font size */
+            color: black; /* Changed arrow color to black */
+            transform: rotate(0deg); /* Removed rotation */
+        }
+        /* Customize these */
+        .tiktok-logo {
+            display: inline-block;
+            background: none; /* Removed background */
+            color: black; /* Changed text color to black */
+            border-radius: 0; /* Removed border-radius */
+            padding: 0; /* Removed padding */
+            font-size: inherit; /* Inherit font size */
+            margin-right: 0; /* Removed margin */
+        }
+    </style>
+</head>
+<body>
+    <div class="arrow">^^</div> <!-- Changed to chevrons -->
+
+    <div class="overlay" id="tiktokPrompt">
+        <h2>Um den Link aufzurufen,<br>befolge diese zwei einfachen Schritte:</h2>
+        <p>1. KLICKE AUF ••• OBEN RECHTS</p>
+        <p>2. DANN "IM BROWSER ÖFFNEN"</p>
+    </div>
+</body>
+</html>
