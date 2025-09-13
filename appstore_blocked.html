@@ -1,71 +1,232 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Download MyApp</title>
+    <title>Amen - Bible Study herunterladen</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
             height: 100vh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content to the top */
+            justify-content: center;
             align-items: center;
-            background: linear-gradient(to bottom right, #a445b2, #d41872); /* Purple gradient like screenshot */
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            color: black; /* Changed text color to black */
-            padding-top: 50px; /* Add some top padding */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: #1a1a1a;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
         }
-        .overlay {
-            position: relative; /* Changed to relative to flow with content */
-            margin-top: 150px; /* Adjusted position below the arrow */
-            background: none; /* Removed background */
-            padding: 0; /* Removed padding */
-            border-radius: 0; /* Removed border-radius */
-            box-shadow: none; /* Removed box-shadow */
-            max-width: 80%;
-            text-align: left; /* Aligned text to the left */
-            z-index: 10;
+        
+        .app-icon {
+            position: absolute;
+            top: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
         }
-        .overlay h2 {
-            margin: 0 0 10px;
-            font-size: 24px; /* Increased font size */
-            font-weight: 600;
+        
+        .app-icon::after {
+            content: "✝";
+            font-size: 36px;
+            color: white;
+            font-weight: 300;
         }
-        .overlay p {
-            margin: 0;
-            font-size: 20px; /* Increased font size */
-            line-height: 1.5; /* Added line height for readability */
-        }
+        
         .arrow {
-            position: absolute; /* Changed to absolute for top-right positioning */
-            top: 50px; /* Positioned at the top */
-            right: 50px; /* Positioned at the right */
-            font-size: 60px; /* Adjusted font size */
-            color: black; /* Changed arrow color to black */
-            transform: rotate(0deg); /* Removed rotation */
+            position: absolute;
+            top: 80px;
+            right: 40px;
+            font-size: 48px;
+            color: #1a1a1a;
+            opacity: 0.8;
+            transform: rotate(-15deg);
+            animation: bounce 2s infinite;
         }
-        /* Customize these */
-        .tiktok-logo {
-            display: inline-block;
-            background: none; /* Removed background */
-            color: black; /* Changed text color to black */
-            border-radius: 0; /* Removed border-radius */
-            padding: 0; /* Removed padding */
-            font-size: inherit; /* Inherit font size */
-            margin-right: 0; /* Removed margin */
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: rotate(-15deg) translateY(0);
+            }
+            40% {
+                transform: rotate(-15deg) translateY(-10px);
+            }
+            60% {
+                transform: rotate(-15deg) translateY(-5px);
+            }
+        }
+        
+        .content {
+            text-align: left;
+            max-width: 320px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 32px 28px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 40px;
+        }
+        
+        .content h1 {
+            font-size: 22px;
+            font-weight: 600;
+            line-height: 1.3;
+            margin-bottom: 24px;
+            color: #1a1a1a;
+        }
+        
+        .steps {
+            list-style: none;
+        }
+        
+        .steps li {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            color: #2d2d2d;
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .step-number {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 12px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        
+        .step-text {
+            flex: 1;
+        }
+        
+        .dots {
+            font-weight: 700;
+            color: #1a1a1a;
+        }
+        
+        /* Language detection and responsive design */
+        @media (max-width: 480px) {
+            .content {
+                max-width: 280px;
+                padding: 28px 24px;
+            }
+            
+            .content h1 {
+                font-size: 20px;
+            }
+            
+            .steps li {
+                font-size: 15px;
+            }
+            
+            .app-icon {
+                width: 70px;
+                height: 70px;
+                top: 50px;
+            }
+            
+            .app-icon::after {
+                font-size: 32px;
+            }
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
-<body>
-    <div class="arrow">^^</div> <!-- Changed to chevrons -->
-
-    <div class="overlay" id="tiktokPrompt">
-        <h2>Um den Link aufzurufen,<br>befolge diese zwei einfachen Schritte:</h2>
-        <p>1. KLICKE AUF ••• OBEN RECHTS</p>
-        <p>2. DANN "IM BROWSER ÖFFNEN"</p>
+<body class="fade-in">
+    <div class="app-icon"></div>
+    <div class="arrow">↗</div>
+    
+    <div class="content" id="instructions">
+        <h1 id="title">Um den Link aufzurufen, befolge diese zwei einfachen Schritte:</h1>
+        <ul class="steps">
+            <li>
+                <div class="step-number">1</div>
+                <div class="step-text">Klicke auf <span class="dots">•••</span> oben rechts</div>
+            </li>
+            <li>
+                <div class="step-number">2</div>
+                <div class="step-text">Dann auf "Im Browser öffnen"</div>
+            </li>
+        </ul>
     </div>
+    
+    <script>
+        // Language detection based on user's locale
+        function detectLanguage() {
+            const userLang = navigator.language || navigator.userLanguage;
+            const country = userLang.toLowerCase();
+            
+            // German-speaking countries: Germany (de), Austria (de-at), Switzerland (de-ch)
+            const germanCountries = ['de', 'de-de', 'de-at', 'de-ch'];
+            
+            if (germanCountries.some(lang => country.startsWith(lang.split('-')[0]) && 
+                (country.includes('de') || country.includes('at') || country.includes('ch')))) {
+                return 'de';
+            }
+            
+            return 'en';
+        }
+        
+        // Set content based on detected language
+        function setContent() {
+            const lang = detectLanguage();
+            const title = document.getElementById('title');
+            const steps = document.querySelectorAll('.step-text');
+            
+            if (lang === 'en') {
+                document.documentElement.lang = 'en';
+                document.title = 'Download Amen - Bible Study';
+                title.textContent = 'To access the link, follow these two simple steps:';
+                steps[0].innerHTML = 'Click on <span class="dots">•••</span> at the top right';
+                steps[1].textContent = 'Then tap "Open in browser"';
+            }
+            // German is default, so no changes needed for German
+        }
+        
+        // Initialize content on page load
+        document.addEventListener('DOMContentLoaded', setContent);
+    </script>
 </body>
 </html>
