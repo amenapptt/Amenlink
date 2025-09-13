@@ -182,6 +182,29 @@
     </div>
     
     <script>
+        // App Store URL
+        const APP_STORE_URL = 'https://apps.apple.com/de/app/amen-bible-study/id6744241928?platform=iphone';
+        
+        // Detect if user is in TikTok's in-app browser
+        function isTikTokBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('trill') || 
+                   userAgent.includes('musical_ly') || 
+                   userAgent.includes('bytedance') ||
+                   (userAgent.includes('mobile') && userAgent.includes('tiktok'));
+        }
+        
+        // Detect if user is in Instagram's in-app browser
+        function isInstagramBrowser() {
+            const userAgent = navigator.userAgent.toLowerCase();
+            return userAgent.includes('instagram') || userAgent.includes('fbav');
+        }
+        
+        // Check if user is in any restricted in-app browser
+        function isRestrictedBrowser() {
+            return isTikTokBrowser() || isInstagramBrowser();
+        }
+        
         // Language detection based on user's locale
         function detectLanguage() {
             const userLang = navigator.language || navigator.userLanguage;
@@ -215,7 +238,15 @@
         }
         
         // Initialize content on page load
-        document.addEventListener('DOMContentLoaded', setContent);
+        document.addEventListener('DOMContentLoaded', function() {
+            if (isRestrictedBrowser()) {
+                // Show instructions for in-app browsers
+                setContent();
+            } else {
+                // Redirect to App Store for normal browsers
+                window.location.href = APP_STORE_URL;
+            }
+        });
     </script>
 </body>
 </html>
